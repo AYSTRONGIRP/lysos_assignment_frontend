@@ -29,7 +29,10 @@ const Tournament = () => {
 
   }, []);
 
-  const options = { hour12: false };
+  const options = { 
+    timeZone: 'UTC', // Set to UTC
+    hour12: false 
+  };
 
   const currentTimeFormatted = useMemo(() => currentTime.toLocaleTimeString([], options), [currentTime, options]);
 
