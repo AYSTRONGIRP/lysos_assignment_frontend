@@ -4,7 +4,8 @@ const intialState = {
     name:"",
     email:"",
     password:"",
-    id:""
+    id:"",
+    prev:"",
 }
 const login_info_slice = createSlice({
     name:"loginInfoName",
@@ -21,11 +22,12 @@ const login_info_slice = createSlice({
             return {...state ,email: action.payload}},
         setId: (state,action)=>{console.log(action.payload)
             return {...state ,id: action.payload}},
+        setPrev: (state, action) => ({ ...state, prev: action.payload }),
         clear:(state)=>{console.log(state)
         return{intialState}}
     }
 })
 
-export const {setPassword,setEmail,setName , setId , clear } = login_info_slice.actions;
+export const {setPassword,setEmail,setName , setId , clear ,setPrev } = login_info_slice.actions;
 export default login_info_slice.reducer;
 

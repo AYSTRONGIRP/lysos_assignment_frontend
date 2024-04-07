@@ -19,8 +19,10 @@ const Number_card = ({ number , tournaments}) => {
             pid:id,
             tname:tournaments.name
           }});
-          console.log(response.data);
-        setMoney(response.data[0].money);
+          console.log(response.data.length);
+
+          if(response.data.length)
+          setMoney(response.data[0].money);
       } catch (error) {
         console.error('Error fetching money:', error);
       }

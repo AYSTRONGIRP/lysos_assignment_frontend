@@ -27,7 +27,7 @@ const Previous_tournment = () => {
         try {
             const response = await axios.get(`${API_URL}/tournament`);
             setTournaments(response.data.slice(1));
-            // console.log(response.data[0].name, "previous");
+            console.log(response.data.slice(1), "previous");
         } catch (error) {
             console.error('Error fetching tournaments:', error);
         }
@@ -36,7 +36,7 @@ const Previous_tournment = () => {
     fetchTournaments(); // Initial fetch
 
     // Fetch tournaments every second
-    const intervalId = setInterval(fetchTournaments, 1000);
+    const intervalId = setInterval(fetchTournaments, 10000);
 
     // Cleanup function to clear interval on unmount or when component is re-rendered
     return () => clearInterval(intervalId);
@@ -49,11 +49,11 @@ const Previous_tournment = () => {
 //     "id": 107,
 //     "__v": 0
 // }
-  return (
+  return (  
     <div style={{ maxHeight: '1800px', overflowY: 'auto' }}>
       {tournaments.map(tournament => (
         <Tournament_card
-          key={tournament.name}
+          key={tournament.id}
           name={tournament.name}
           pid={tournament.id}
           winner={tournament.winner}

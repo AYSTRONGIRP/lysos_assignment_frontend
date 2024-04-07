@@ -1,0 +1,32 @@
+.wheel {
+    width: 200px;
+    height: 200px;
+    position: relative;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.wheel-container {
+    position: relative; /* Make the container relatively positioned */
+}
+
+.arrow {
+    position: absolute; /* Position the arrow absolutely relative to its container */
+    top: 100%; /* Position the arrow vertically centered */
+    left: 50%; /* Position the arrow horizontally centered */
+    transform: translate(-50%, -100%) rotate(0deg); /* Rotate the arrow and adjust position */
+    width: 0; 
+    height: 0; 
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 20px solid black; /* Adjust the size and color of the arrow */
+}
+
+.spinning-wheel {
+    width: 100%;
+    height: 100%;
+    
+}

@@ -1,4 +1,4 @@
-import './App.css';
+// import './App.css';
 import LandingPage from './components/login/Landing_page';
 import Tournament from './components/tournament/Tournament';
 import { useState, useEffect } from 'react';

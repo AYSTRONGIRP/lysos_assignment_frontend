@@ -1,4 +1,5 @@
 // config.js
-const API_URL = 'https://lysos-assignmennt-backend.onrender.com/';
-
+const API_URL = 'https://lysos-assignmennt-backend.onrender.com'
+// 'https://lysos-assignmennt-backend.onrender.com';
+// 
 export default API_URL;

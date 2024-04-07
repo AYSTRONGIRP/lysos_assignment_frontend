@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Biased Spinning Wheel</title>
+  <style>
+    /* Style the spinning wheel */
+    #wheel {
+      width: 200px;
+      height: 200px;
+      border: 2px solid black;
+      border-radius: 50%;
+      position: relative;
+      animation: spin 5s ease-in-out forwards;
+    }
+
+    /* Define spinning animation */
+    @keyframes spin {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(720deg); /* 720deg for two full spins, adjust as needed */
+      }
+    }
+
+    /* Style wheel numbers */
+    .number {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 20px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div id="wheel">
+    <div class="number">1</div>
+    <div class="number">2</div>
+    <!-- Add more number divs as needed -->
+  </div>
+
+  <script>
+    // Assume you have a function to fetch biased number from the backend
+    function fetchBiasedNumber() {
+      // Make an API request to your backend
+      // Return a Promise that resolves with the biased number
+      return new Promise((resolve, reject) => {
+        // Simulating backend response with a random biased number (1-12)
+        const biasedNumber = Math.floor(Math.random() * 12) + 1;
+        resolve(biasedNumber);
+      });
+    }
+
+    // When the document is ready
+    document.addEventListener('DOMContentLoaded', async () => {
+      try {
+        const biasedNumber = await fetchBiasedNumber();
+        const wheel = document.getElementById('wheel');
+        // Calculate final rotation based on biased number
+        const finalRotation = (biasedNumber - 1) * 30; // 30deg per number
+        wheel.style.animation = `spin 5s ease-in-out forwards, final-spin 1s ease-in-out forwards`;
+        // Apply final rotation after spinning animation
+        document.styleSheets[0].insertRule(`@keyframes final-spin {
+          from {
+            transform: rotate(720deg); /* Two full spins */
+          }
+          to {
+            transform: rotate(${720 + finalRotation}deg);
+          }
+        }`);
+      } catch (error) {
+        console.error('Error fetching biased number:', error);
+      }
+    });
+  </script>
+</body>
+</html>
